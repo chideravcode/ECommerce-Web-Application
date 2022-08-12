@@ -1,0 +1,2 @@
+python manage.py runserver > follow link to view webpage > ctrl + c to exit
+https://www.youtube.com/playlist?list=PL-51WBLyFTg0omnamUjL1TCVov7yDTRng

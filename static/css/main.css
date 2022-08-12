@@ -1,0 +1,100 @@
+/* edit html class such as lg-4 to structure page
+ctrl + f5 to refresh chrome.
+*/
+body{
+    background-color: whitesmoke;
+}
+
+#cart-icon{
+    width: 30px;
+    align-content: center;
+}
+
+#store-logo{
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+.navcart{
+    display: inline-block;
+}
+
+
+/*.btn{
+    ;
+}*/
+
+/* full-height navbar*/
+.col-3{
+    background-color: whitesmoke;
+    border-style: dotted;
+}
+.navbar {
+    height: 100vh;
+    width: 25%;
+    position:fixed;
+    background-color: whitesmoke;
+    border-style: solid;
+}
+
+.nav{
+    width: 100%;
+    background-color: white;
+    align-items: center;
+    border-style: double;
+}
+
+.box-element{
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.product{
+    border-radius: 0 0 4px 4px;
+}
+
+.thumbnail{
+    width: 100%;
+    height: 200px;
+    /*-webkit-box-shadow: -1px -3px 5px 2px;
+    -moz-box-shadow: -1px -3px 5px -2px (rgba);*/
+
+}
+
+.cart-row{
+    display: flex;
+    align-items: flex-stretch;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1ppx solid black;
+}
+
+.row-image{
+    width: 100px;
+}
+
+.quantity{
+    display: inline-block;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.chg-quantity{
+    width: 12px;
+    cursor: pointer;
+    display: block;
+
+}
+
+.form-field{
+    width: 250px;
+    display: inline-block;
+    padding: 5px;
+}
+
+.hidden{
+    display: none!important;
+}

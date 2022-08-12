@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> <!-- Place above own stylesheet so it can be overridden. -->
+    <link rel="stylesheet" type = "text/css" href="{% static 'css/main.css' %}">
+    <meta name="viewport" content="width=device-width , initial-scale = 1, maximum-scale = 1, minimum-scale = 1"/>
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        //CSRF Tokens prevent cross site request forgeries and are required.
+        function getToken(name){
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== ''){
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++){
+                    var cookie = cookies[i].trim();
+                    // "Does this cookie string begin with the name we want?"
+                    if (cookie.substring(0, name.length + 1) == (name + '=')){
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken');
+
+        function getCookie(name){
+            // Split cookie string and all individual name=value pairs in array
+            var cookieArr = document.cookie.split(";");
+            
+            // Loop through the array
+            for (var i = 0; i < cookieArr.length; i++){
+                var cookiePair = cookieArr[i].split("=");
+
+                // Remove whitespace and compare with given string
+                if (name == cookiePair[0].trim()){
+                    // Decode cookie and return value
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+
+            // Return null if cookie not found
+            return null;
+
+        }
+
+        var cart = JSON.parse(getCookie('cart'))
+
+        // Create new cart for users if cart is null
+        if (cart == undefined){
+            cart = {}
+            console.log("Cart created.")
+
+            document.cookie = "cart = " + JSON.stringify(cart) + ";domain=;path=/"
+        }
+
+        console.log("Cart: ", cart)
+
+    </script> <!-- Store user type. -->
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-3">
+            <nav class ="navbar">
+                <ul class ="nav navbar-nav">
+                    <li class ="nav-item">
+                        <a href="{% url 'store' %}">
+                            <img id = "store-logo" src="{% static 'images/storelogo.png' %}">
+                        </a>
+                    </li>
+                    <li class ="nav-item">
+                        <a class ="nav-link" href="{% url 'store' %}"> Link </a>
+                    </li>
+                    
+                    <div class = "navcart my-2 my-lg-0">
+                        <a href="{% url 'cart' %}">
+                            <img id = "cart-icon" src="{% static 'images/basket.png' %} ">
+                        </a>
+                        <p id = "cart-total">{{cartItems}}</p>
+                        <a href = "#" class="btn btn-warning">Login</a>
+                    </div>
+
+                </ul>
+            </nav>
+        </div>
+            <div class="col-9">
+                <div class="container">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+    </div>
+
+    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>
