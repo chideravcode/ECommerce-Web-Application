@@ -1,2 +1,2 @@
 # ECommerce-Web-Application
-Sell your products using this Ecommerce web application! Written in Python, Javascript, HTML, and CSS using Django.
+Use this ecommerce web application as a basis for your web store! Written in Python, Javascript, HTML, and CSS using Django.
